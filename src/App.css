@@ -1,0 +1,494 @@
+:root {
+  /* 
+        FIRST WE'LL DEFINE OUR SWATCHES, i.e. THE COMPLEMENTARY
+        COLORS THAT WE'LL USE TOGETHER IN MULTIPLE PLACES THAT
+        TOGETHER WILL MAKE UP A GIVEN THEME
+    
+        @author McKilla Gorilla
+    */
+  --swatch-foundation: #FFFEC1;
+  --swatch-primary: #e6e6e6;
+  --swatch-complement: #e1e4cb;
+  --swatch-contrast: #111111;
+  --swatch-accent: #669966;
+  --swatch-status: #fffec1;
+  --my-font-family: "Robaaaoto";
+  --bounceEasing: cubic-bezier(0.51, 0.92, 0.24, 1.15);
+}
+
+body {
+  background-color: var(--swatch-foundation);
+}
+
+#root {
+  background-color: #ddbea9;
+  font-family: "Raleway", sans-serif;
+  position: absolute;
+  width: 100%;
+  left: 0%;
+  height: 100%;
+  top: 0%;
+}
+
+#app-root {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+}
+
+#splash-screen {
+  background-image: linear-gradient(to bottom right, #ffe8d6, #ffe8d6);
+  padding-top: 5%;
+  width: 100%;
+  height: 90%;
+}
+
+#splash-screen-welcome {
+  background-color: #fff;
+  height: 450px;
+  width: 550px;
+  position: absolute;
+  left: 35%;
+  top: 20%;
+  border-color: #c4c4c4;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 10px;
+  vertical-align: center;
+  text-align: center;
+}
+
+#playlister-text {
+  color: #6b705c;
+  font-family: 'Brush Script MT';
+  font-weight: bold;
+  font-size: 40px;
+}
+
+#userInitials-icon {
+  background-color: #6b705c;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+#userInitials-text{
+  font-size: 20px;
+  font-family: 'Raleway';
+  font-weight: bold;
+}
+
+#addsong-toolbar {
+  background-color: transparent;
+  float: left;
+  margin: 10px;
+}
+
+#edit-toolbar {
+  background-color: transparent;
+  float: left;
+  margin: 10px;
+}
+
+#publish-toolbar {
+  background-color: transparent;
+  float: right;
+  margin: 10px;
+}
+
+#playlister-statusbar {
+  position: absolute;
+  left: 0%;
+  top: 90%;
+  width: 100%;
+  height: 10%;
+  background-color: #ffe8d6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36pt;
+}
+
+#list-selector-list {
+  position: relative;
+  left: 0%;
+  top: 10px;
+  width: 60%;
+  max-height: 575px;
+  display: flex;
+  flex-direction: column;
+}
+
+#youtube-player {
+  position: relative;
+  padding-left: 2%;
+  padding-top: 1%;
+  top: 15px;
+  width: 36%;
+  height: 100%;
+  background-color: #ffe8d6;
+  border-radius: 1%;
+}
+
+#youtube-player-button {
+  margin-top: 0px;
+  padding-bottom: 20px;
+}
+
+#current-song-text {
+  margin-bottom: 1%;
+}
+
+#empty-playlist-text{
+  width: 520px;
+  height: 300px; 
+  background-color: white;
+  color: #463f3a;
+  font-family:'Raleway';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  font-size: 40px
+}
+
+#comments-box {
+  height: 435px;
+  width: 94%;
+}
+
+.list-card,
+.selected-list-card,
+.unselected-list-card {
+  font-size: 20pt;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.list-card:aria-disabled,
+.list-card[aria-disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  pointer-events: none;
+}
+
+.unselected-list-card:hover {
+  cursor: pointer;
+  background-color: gray;
+  color: white;
+}
+
+.selected-list-card {
+  background-color: var(--swatch-accent);
+  color: white;
+}
+
+.unselected-list-card {
+  background-color: #e8ac65;
+  color: white;
+}
+
+.list-card-button {
+  float: right;
+  font-size: 30px;
+}
+
+#workspace-home,
+#workspace-edit {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+}
+
+#edit-numbering {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  width: 20%;
+  height: 100%;
+  background-color: var(--swatch-status);
+}
+
+#edit-items {
+  position: absolute;
+  left: 20%;
+  top: 0%;
+  width: 80%;
+  height: 100%;
+  background-color: var(--swatch-primary);
+}
+
+.item-number {
+  display: flex;
+  align-items: center;
+  font-size: 48pt;
+  height: 20%;
+}
+
+.item-number {
+  justify-content: center;
+  width: 100%;
+  border: 1px 0px 1px 1px;
+  border-color: black;
+  background-color: linen;
+  color: black;
+}
+
+input {
+  font-size: 20pt;
+}
+
+.disabled {
+  background-color: lightgray;
+}
+
+.disabled:hover {
+  color: var(--swatch-neutral);
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 105%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+/* THIS STYLE SHEET MANAGES STYLE FOR OUR MODAL, i.e. DIALOG BOX */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: var(--black);
+  color: #D4D5F5;
+  cursor: pointer;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.35s ease-in;
+  font-family: var(--font-primary);
+}
+
+.modal.is-visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-dialog {
+  position: relative;
+  max-width: 800px;
+  max-height: 80vh;
+  background: #ffe8d6;
+  overflow: auto;
+  cursor: default;
+  border-width: 5px;
+  border-radius: 10px;
+  border-style: groove;
+}
+
+.modal-dialog > * {
+  padding: 1rem;
+}
+
+.modal-header,
+.modal-footer {
+  background: var(--lightgray);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: dotted;
+}
+
+.modal-header,
+.modal-close {
+  font-size: 1.5rem;
+}
+
+.modal p + p {
+  margin-top: 1rem;
+}
+
+.modal-control {
+  cursor: pointer;
+  width: 20%;
+}
+
+.dialog-header {
+  font-size: 24pt;
+  background-color: #cb997e;
+  color: white;
+  font-weight:  bold;
+  font-family: 'Raleway';
+}
+
+.modal-textfield {
+  font-size: 23px;
+  margin-bottom: 5px;
+  width: 250px;
+  color:'#463f3a';
+  font-family: 'Raleway';
+}
+
+.modal-center {
+  margin-top: 8px;
+}
+
+.modal-text {
+  font-size: 23px;
+  margin-right: 5px;
+  margin-top: 3px;
+  color:'#463f3a';
+  font-family: 'Raleway';
+  text-align: center;
+}
+
+.modal-prompt {
+  font-size: 20px;
+  margin-right: 5px;
+  margin-top: 3px;
+  color:'#463f3a';
+  font-family: 'Raleway';
+}
+
+.modal-button:hover {
+  background-color:'gray';
+}
+
+#close-modal-button {
+  float: right;
+}
+
+#confirm-cancel-container {
+  text-align: center;
+}
+
+/* ANIMATIONS
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+[data-animation] .modal-dialog {
+  opacity: 0;
+  transition: all 0.5s var(--bounceEasing);
+}
+
+[data-animation].is-visible .modal-dialog {
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+[data-animation="slideInOutDown"] .modal-dialog {
+  transform: translateY(100%);
+}
+
+[data-animation="slideInOutTop"] .modal-dialog {
+  transform: translateY(-100%);
+}
+
+[data-animation="slideInOutLeft"] .modal-dialog {
+  transform: translateX(-100%);
+}
+
+[data-animation="slideInOutRight"] .modal-dialog {
+  transform: translateX(100%);
+}
+
+[data-animation="zoomInOut"] .modal-dialog {
+  transform: scale(0.2);
+}
+
+[data-animation="rotateInOutDown"] .modal-dialog {
+  transform-origin: top left;
+  transform: rotate(-1turn);
+}
+
+[data-animation="mixInAnimations"].is-visible .modal-dialog {
+  animation: mixInAnimations 2s 0.2s linear forwards;
+}
+
+[data-animation="slideInOutDown"].is-visible .modal-dialog,
+[data-animation="slideInOutTop"].is-visible .modal-dialog,
+[data-animation="slideInOutLeft"].is-visible .modal-dialog,
+[data-animation="slideInOutRight"].is-visible .modal-dialog,
+[data-animation="zoomInOut"].is-visible .modal-dialog,
+[data-animation="rotateInOutDown"].is-visible .modal-dialog {
+  transform: none;
+}
+
+@keyframes mixInAnimations {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  10% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: rotate(20deg);
+  }
+
+  30% {
+    transform: rotate(-20deg);
+  }
+
+  40% {
+    transform: rotate(15deg);
+  }
+
+  50% {
+    transform: rotate(-15deg);
+  }
+
+  60% {
+    transform: rotate(10deg);
+  }
+
+  70% {
+    transform: rotate(-10deg);
+  }
+
+  80% {
+    transform: rotate(5deg);
+  }
+
+  90% {
+    transform: rotate(-5deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
